@@ -1,0 +1,52 @@
+@import 'sanitize.css';
+@import '@fontsource/playfair-display/variable.css';
+@import '@fontsource/inter/variable.css';
+
+:root {
+	--font-heading: 'Playfair Display', serif;
+	--font-body: 'Inter', sans-serif;
+	--gutter: 2rem;
+	--size-max: 1200px;
+	font-size: 62.5%;
+	font-family: var(--font-body);
+	font-weight: 400;
+}
+:where(h1, h2, h3, h4, h5, h6) {
+	font-family: var(--font-heading);
+	font-weight: 700;
+}
+body {
+	font-size: 1.8rem;
+}
+main {
+	margin: auto;
+	max-width: 1200px;
+}
+h1 {
+	font-size: 5.4rem;
+}
+h2 {
+	font-size: 4.8rem;
+}
+h3 {
+	font-size: 3.8rem;
+}
+h4 {
+	font-size: 3.2rem;
+}
+h5 {
+	font-size: 2.8rem;
+}
+h6 {
+	font-size: 2.2rem;
+}
+@supports (font-variation-settings: normal) {
+	:root {
+		--font-body: 'InterVariable', sans-serif;
+		font-variation-settings: 'wght' 400;
+	}
+	:where(h1, h2, h3, h4, h5, h6) {
+		--font-heading: 'Playfair Display Variable', serif;
+		font-variation-settings: 'wght' 700;
+	}
+}
