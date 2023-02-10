@@ -1,3 +1,4 @@
+import type { LayoutServerLoad } from './$types';
 import {
 	SECRET_HRFETCH_USER,
 	SECRET_HRFETCH_PASS,
@@ -5,7 +6,6 @@ import {
 	SECRET_ADFETCH_PASS
 } from '$env/static/private';
 import { PUBLIC_HRFETCH_URL, PUBLIC_ADFETCH_URL } from '$env/static/public';
-import type { LayoutLoad } from './$types';
 
 const getEncodedCredentials = function (username: string, password: string) {
 	if (!username || !password) return;
@@ -22,7 +22,7 @@ const setEncondedCredentials = function (username: string, password: string) {
 	return headers;
 };
 
-export const load = (async ({ fetch }) => {
+export const load = (async () => {
 	const hrData = await fetch(PUBLIC_HRFETCH_URL, {
 		method: 'GET',
 		headers: setEncondedCredentials(SECRET_HRFETCH_USER, SECRET_HRFETCH_PASS)
@@ -39,4 +39,4 @@ export const load = (async ({ fetch }) => {
 		hrData: hrJSON,
 		adData: adJSON
 	};
-}) satisfies LayoutLoad;
+}) satisfies LayoutServerLoad;
